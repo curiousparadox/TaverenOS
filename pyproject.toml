@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "taverenos"
+version = "0.1.0"
+description = "Symbolic recursive AI scaffolding for TaverenOS"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "TaverenOS Project" }]
+license = { file = "LICENSE" }
+dependencies = [
+    "fastapi>=0.111",
+    "pydantic>=2.6",
+    "redis>=5.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "black>=24.0",
+    "ruff>=0.4",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "B", "I", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
